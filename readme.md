@@ -1,3 +1,8 @@
+[English](https://github.com/rm-rfd/ez-paqet/blob/main/readme.md) | [فارسی](https://github.com/rm-rfd/ez-paqet/blob/main/README.fa_IR.md)
+
+> [!IMPORTANT]
+> This project is only for personal usage, please do not use it for illegal purposes, and please do not use it in a production environment.
+
 # Ez-Paqet 🚀
 
 Ez-Paqet is a collection of automated installation scripts for **Paqet**, a high-performance network tunneling tool designed to work even in restrictive network environments. These scripts simplify the setup process on Linux servers and clients, handling dependencies, configuration, and system services automatically.
