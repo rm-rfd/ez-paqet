@@ -87,6 +87,10 @@ check_root() {
 
 # Setup Proxy
 setup_proxy() {
+    log_info "Some network environments may restrict direct access to external resources."
+    log_info "If you are in a restricted network (like Iran or China), you might need an HTTP/HTTPS"
+    log_info "proxy to download the Paqet binary and its dependencies successfully."
+    
     read -p "HTTP/HTTPS Proxy (e.g., http://10.10.1.1:8080, leave empty if none): " input_proxy
     if [ -n "$input_proxy" ]; then
         export http_proxy="$input_proxy"

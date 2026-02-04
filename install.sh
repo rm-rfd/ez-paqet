@@ -49,6 +49,21 @@ check_dependencies() {
     fi
 }
 
+setup_proxy() {
+    log_info "Some network environments may restrict direct access to external resources."
+    log_info "If you are in a restricted network, you might need an HTTP/HTTPS"
+    log_info "proxy to download the child installation scripts successfully."
+    
+    read -p "HTTP/HTTPS Proxy (e.g., http://10.10.1.1:8080, leave empty if none): " input_proxy
+    if [ -n "$input_proxy" ]; then
+        export http_proxy="$input_proxy"
+        export https_proxy="$input_proxy"
+        export HTTP_PROXY="$input_proxy"
+        export HTTPS_PROXY="$input_proxy"
+        log_success "Proxy environment variables set"
+    fi
+}
+
 select_role() {
     echo "=========================================="
     echo "Paqet Unified Installer"
@@ -114,6 +129,7 @@ download_and_run() {
 main() {
     check_root
     check_dependencies
+    setup_proxy
     select_role
     download_and_run
 }

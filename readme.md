@@ -70,7 +70,7 @@ sudo bash -c "$(curl -fsSL https://raw.githubusercontent.com/rm-rfd/ez-paqet/mai
 ```
 
 - **What it does:** Installs dependencies, asks for the Server IP and Key, and sets up a SOCKS5 proxy.
-- **Result:** It creates a local proxy at `127.0.0.1:1080`.
+  > **Note on Proxy:** If your network is highly restricted and you cannot even download the Paqet binary or dependencies, the script will prompt you to enter an HTTP/HTTPS proxy. This allows the installer to "pass through" the initial restrictions using a temporary proxy that you know works.- **Result:** It creates a local proxy at `127.0.0.1:1080`.
 
 ---
 
