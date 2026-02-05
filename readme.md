@@ -1,4 +1,4 @@
-[English](https://github.com/rm-rfd/ez-paqet/blob/main/readme.md) | [فارسی](https://github.com/rm-rfd/ez-paqet/blob/main/README.fa_IR.md)
+[English](/README.md) | [فارسی](/README.fa_IR.md)
 
 > [!IMPORTANT]
 > This project is only for personal usage, please do not use it for illegal purposes, and please do not use it in a production environment.
@@ -138,6 +138,31 @@ Once you save the configuration and restart the Xray service via the panel:
 2. **Xray Processing:** Xray receives the traffic.
 3. **Outbound Path:** Xray forwards it to the **Default Outbound** -> `127.0.0.1:1080` (Paqet).
 4. **Tunneling:** Paqet wraps the traffic and sends it to your **Remote Server** in the free region.
+
+---
+
+## 🛠️ Troubleshooting: Restricted Server Access
+
+If your local/bridge server has highly restricted internet access and cannot download the necessary packages or scripts, you can tunnel your local computer's proxy connection to the server using SSH.
+
+1. **Prepare your local proxy:** Ensure you have a working proxy (e.g., v2rayN, v2rayNG) on your local computer.
+   - It **must** be in **Proxy mode** (HTTP/SOCKS).
+   - It **must NOT** be in VPN (TUN) mode.
+   - Note the port number (e.g., `10809`).
+
+2. **Establish an SSH Reverse Tunnel:** Run the following command in your local terminal (replace `PORT` with your local proxy port and `username@serverip` with your server details):
+
+   ```bash
+   ssh -R PORT:127.0.0.1:PORT username@serverip
+   ```
+
+3. **Configure Proxy on the Server:** Once connected to the server via SSH, run the following commands to route outgoing traffic through your tunnel:
+   ```bash
+   export http_proxy=http://127.0.0.1:PORT
+   export https_proxy=http://127.0.0.1:PORT
+   ```
+
+Now your server will have access to the internet through your local connection to download packages and run the installation scripts.
 
 ---
 
