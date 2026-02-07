@@ -15,7 +15,7 @@ BLUE='\033[0;34m'
 NC='\033[0m' # No Color
 
 # Configuration
-VERSION="1.0.0-alpha.13"
+VERSION="1.0.0-alpha.15"
 INSTALL_DIR="/opt/paqet-client"
 PAQET_SOCKS_PORT="1080"
 PAQET_KEY="your-secret-key-here"
@@ -286,22 +286,22 @@ server:
 
 transport:
   protocol: "kcp"
-  conn: 1
+  conn: 2
   kcp:
     mode: "manual"
-    nodelay: 0
-    interval: 30
-    resend: 0
-    nocongestion: 0
-    acknodelay: false
-    wdelay: true
+    nodelay: 1
+    interval: 10
+    resend: 2
+    nocongestion: 1
+    acknodelay: true
+    wdelay: false
     mtu: 1350
-    rcvwnd: 512
-    sndwnd: 512
+    rcvwnd: 2048
+    sndwnd: 2048
     block: "aes"
     key: "$PAQET_KEY"
-    smuxbuf: 4194304
-    streambuf: 2097152
+    smuxbuf: 8388608
+    streambuf: 4194304
 EOF
     
     chmod 600 "$CONFIG_FILE"
